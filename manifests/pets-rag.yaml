@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pets-rag
+  namespace: pets
+  labels:
+    app: RAG
+spec:
+  containers:
+  - image: mapgirll/pets:pets-python-rag-amd64
+    command: ["/bin/sleep"]  # Sleep command to keep the container running
+    args: ["infinity"]  # Sleep indefinitely to prevent the container from exiting
+    env:
+    - name: OPENAI_API_KEY
+      value: <API-KEY>
+    - name: STORE-ADMIN-IP
+      value: <IP-ADDRESS>
+    imagePullPolicy: Always
+    name: pets-rag
+  restartPolicy: Always
